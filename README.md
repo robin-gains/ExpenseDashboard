@@ -82,7 +82,11 @@ spendlens-dashboard/
 ## Assumptions the Next Developer Should Know
 
 1.The app has no backend. All expense data lives in src/data/expenses.js and currency rates live in src/data/rates.js. Both are static files — nothing talks to a server or database.
+
 2.The exchange rates shown in the app are not live. They were hardcoded at build time and will go stale. Do not use them for anything that needs to be accurate.
+
 3.There is no login or user system of any kind. Anyone with the URL can open the app and see everything.
+
 4.There are no tests. If you change something, you will need to manually check that nothing broke.
+
 5.Pushing to main deploys immediately to production via Vercel. There is no staging environment, so be careful with what you merge.
