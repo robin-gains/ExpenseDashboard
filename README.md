@@ -61,12 +61,19 @@ spendlens-dashboard/
 ## Known Limitations
 
 1.The category filter is currently blank it renders on the page but is not yet connected to the expense data. Given another 4 hours, this would be the first thing fixed.
+
 2.Data does not persist. Any expenses added through the UI disappear on refresh, because the app runs entirely off hardcoded mock data. A real version would use localStorage as a quick fix, or a proper backend like Supabase for anything longer term.
+
 3.The UI is functional but visually thin. There is no colour hierarchy, no charts, and limited responsiveness. A redesign with a proper palette and a charting library like Recharts would make it feel like a real product.
+
 4.Notes entered in the app are not saved anywhere. They would need to be stored in localStorage tied to each expense to survive a page reload.
+
 5.Deleting a row that is mid-edit causes a UI glitch. If you click Edit on an expense and then delete it without saving, the app stays in edit mode for a row that no longer exists. A simple guard that clears editId before deleting resolves this.
+
 6.Deleting all expenses leaves components empty with no feedback. Totals drop to $0.00 and tables go blank. Components should check for empty arrays and show a message like "No expenses yet" rather than rendering nothing.
+
 7.Adding after deleting can create duplicate IDs. If IDs are generated using expenses.length + 1, deleting an item and adding a new one can produce two rows with the same ID, breaking React rendering and editing. Switching to Date.now() as the ID fixes this entirely.
+
 8.No confirmation before deleting. A single misclick permanently removes an expense for the session. A simple window.confirm("Delete this expense?") prompt would prevent accidental deletions.
 
 
